@@ -80,8 +80,8 @@ public class MultiItemTypeAdapter<DataType> extends CommonAdapter<DataType> impl
     }
 
     @Override
-    public void convert(ViewHolder viewHolder, DataType data, int position) {
-        mItemViewDelegateManager.convert(viewHolder, data, position);
+    public void convert(ViewHolder holder, DataType data, int position) {
+        mItemViewDelegateManager.convert(holder, data, position);
     }
 
     @Override

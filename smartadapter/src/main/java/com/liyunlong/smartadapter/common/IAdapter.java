@@ -78,6 +78,6 @@ public interface IAdapter<DataType> {
     /**
      * 数据和事件绑定
      */
-    void convert(ViewHolder viewHolder, DataType data, int position);
+    void convert(ViewHolder holder, DataType data, int position);
 
 }
