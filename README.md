@@ -110,3 +110,7 @@ ListView,GridView,RecyclerView用法相同
     List<Fragment> fragments = new ArrayList<>();
     viewPager.setAdapter(new CommonFragmentStatePagerAdapter(getSupportFragmentManager(), fragments));
 ```
+
+## 感谢 ##
+1.[baseAdapter](https://github.com/hongyangAndroid/baseAdapter)
+2.[AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates)
