@@ -32,11 +32,12 @@ ViewHolder中封装了大量的常用的方法，实现了View的复用，省去
 * setOnLongClickListener(int viewId, View.OnLongClickListener listener)：为View设置长点击事件
 * setOnTouchListener(int viewId, View.OnTouchListener listener)：为View设置触摸事件
 
-## ListView,GridView,RecyclerView的使用(ListView,GridView,RecyclerView用法相同) ##
+## ListView,GridView,RecyclerView的使用 ##
+ListView,GridView,RecyclerView用法相同
 
 #### 准备初始化工作 ####
-初始化ListView,GridView,RecyclerView等目标控件targetView；
-创建数据类型DataModel并初始化数据源Collection<DataModel> datas。
+1.初始化ListView,GridView,RecyclerView等目标控件targetView；
+2.创建数据类型DataModel并初始化数据源Collection<DataModel> datas。
 
 #### 单种Item的创建和数据绑定： ####
 ```java
@@ -79,10 +80,10 @@ ViewHolder中封装了大量的常用的方法，实现了View的复用，省去
 ```
 2.将创建的ItemViewDelegate添加到创建的MultiItemTypeAdapter适配器中：
 ```java
-        MultiItemTypeAdapter<DataModel> multiAdapter = new MultiItemTypeAdapter<>(datas);
-        multiAdapter.addItemViewDelegate(new ItemTypeFirstDelagate());
-        multiAdapter.addItemViewDelegate(new ItemTypeSecondDelagate());
-        targetView.setAdapter(multiAdapter);
+    MultiItemTypeAdapter<DataModel> multiAdapter = new MultiItemTypeAdapter<>(datas);
+    multiAdapter.addItemViewDelegate(new ItemTypeFirstDelagate());
+    multiAdapter.addItemViewDelegate(new ItemTypeSecondDelagate());
+    targetView.setAdapter(multiAdapter);
 ```
 注意：只添加一个ItemViewDelegate相当于单种Item类型的使用。
 
