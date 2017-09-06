@@ -2,15 +2,8 @@ package com.liyunlong.smartadapter.demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import com.liyunlong.smartadapter.viewpager.CommonFragmentPagerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,9 +16,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.recycleview_single_multi).setOnClickListener(this);
         findViewById(R.id.recycleview_header_footer).setOnClickListener(this);
         findViewById(R.id.recycleview_emptyview).setOnClickListener(this);
-        ViewPager viewPager = new ViewPager(this);
-        List<Fragment> fragments = new ArrayList<>();
-        viewPager.setAdapter(new CommonFragmentPagerAdapter(getSupportFragmentManager(), fragments));
     }
 
     @Override
