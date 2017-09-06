@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SmartAdapter-master</string>
+    <string name="listview_single_multi">ListView单类型/多类型</string>
+    <string name="recycleview_single_multi">RecycleView单类型/多类型</string>
+    <string name="recycleview_header_footer">RecycleView Header/Footer</string>
+    <string name="recycleview_emptyview">RecycleView EmptyView</string>
+</resources>
