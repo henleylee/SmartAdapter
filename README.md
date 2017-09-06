@@ -9,8 +9,8 @@ ViewHolder中封装了大量的常用的方法，实现了View的复用，省去
 * setText(int viewId, CharSequence text)：为TextView设置文本
 * setText(int viewId, int resId)：为TextView设置文本
 * setTextColor(int viewId, int textColor)：为TextView设置文本颜色
-* setTextColorRes(int viewId, @ColorRes int textColorRes)：为TextView设置文本颜色
-* linkify(int viewId, @LinkifyCompat.LinkifyMask int mask)：为TextView设置超链接
+* setTextColorRes(int viewId, int textColorRes)：为TextView设置文本颜色
+* linkify(int viewId, int mask)：为TextView设置超链接
 * setTypeface(Typeface typeface, int... viewIds)：为TextView设置文本字体
 * setImageResource(int viewId, int resId)：为ImageView设置图片
 * setImageBitmap(int viewId, Bitmap bitmap)：为ImageView设置图片
