@@ -36,9 +36,8 @@ ViewHolder中封装了大量的常用的方法，实现了View的复用，省去
 ListView,GridView,RecyclerView用法相同
 
 #### 准备初始化工作 ####
-1.初始化ListView,GridView,RecyclerView等目标控件targetView；
-
-2.创建数据类型DataModel并初始化数据源Collection<DataModel> datas。
+1. 初始化ListView,GridView,RecyclerView等目标控件targetView；
+2. 创建数据类型DataModel并初始化数据源Collection<DataModel> datas。
 
 #### 单种Item的创建和数据绑定： ####
 ```java
@@ -113,6 +112,5 @@ ListView,GridView,RecyclerView用法相同
 ```
 
 ## 感谢 ##
-1.[baseAdapter](https://github.com/hongyangAndroid/baseAdapter)
-
-2.[AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates)
+1. [baseAdapter](https://github.com/hongyangAndroid/baseAdapter)
+2. [AdapterDelegates](https://github.com/sockeqwe/AdapterDelegates)
