@@ -18,7 +18,7 @@ import java.util.List;
 public class CommonPagerAdapter extends PagerAdapter {
 
     private List<? extends View> mList;
-    private List<CharSequence> mTitles;
+    private List<? extends CharSequence> mTitles;
     protected SparseArray<View> mSparseViews;
 
     public CommonPagerAdapter(List<? extends View> list) {
@@ -32,7 +32,7 @@ public class CommonPagerAdapter extends PagerAdapter {
         }
     }
 
-    public CommonPagerAdapter(List<? extends View> mList, List<CharSequence> titles) {
+    public CommonPagerAdapter(List<? extends View> mList, List<? extends CharSequence> titles) {
         this.mList = mList;
         this.mTitles = titles;
     }
