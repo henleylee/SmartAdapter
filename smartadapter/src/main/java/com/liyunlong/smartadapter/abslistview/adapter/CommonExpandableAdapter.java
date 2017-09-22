@@ -181,7 +181,7 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        int childLayoutID = getChildLayoutID(getChildType(groupPosition, childPosition));
+        int childLayoutID = getItemLayoutID(getChildType(groupPosition, childPosition));
         AbsListViewHolder viewHolder = AbsListViewHolder.getViewHolder(convertView, parent, childLayoutID);
         convertChild(viewHolder.getrViewHolder(), getChild(groupPosition, childPosition), groupPosition, childPosition);
         return viewHolder.getConvertView();
@@ -206,18 +206,27 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
      *
      * @param childType Child视图类型
      */
-    protected int getChildLayoutID(int childType) {
-        return getChildLayoutID();
+    @Override
+    public int getItemLayoutID(int childType) {
+        return getItemLayoutID();
     }
 
     /**
      * 返回Child视图资源ID
      */
-    protected abstract int getChildLayoutID();
-
     @Override
-    public void convert(ViewHolder holder, List<DataType> data, int position) {
-        convertGroup(holder, getGroupData(position), data, position);
+    public abstract int getItemLayoutID();
+
+    /**
+     * Group视图数据和事件绑定
+     *
+     * @param holder        ViewHolder对象
+     * @param childs        Group对应的Child数据
+     * @param groupPosition Group索引
+     */
+    @Override
+    public void convert(ViewHolder holder, List<DataType> childs, int groupPosition) {
+        convertGroup(holder, getGroupData(groupPosition), childs, groupPosition);
     }
 
     /**
@@ -239,18 +248,6 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
      * @param childPosition Child索引
      */
     protected abstract void convertChild(ViewHolder holder, DataType child, int groupPosition, int childPosition);
-
-
-    @Override
-    public int getItemLayoutID(int childType) {
-        return 0;
-    }
-
-
-    @Override
-    public int getItemLayoutID() {
-        return 0;
-    }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {

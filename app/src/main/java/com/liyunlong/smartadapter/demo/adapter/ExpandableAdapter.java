@@ -30,7 +30,7 @@ public class ExpandableAdapter extends CommonExpandableAdapter<String, CardLicen
     }
 
     @Override
-    protected int getChildLayoutID() {
+    public int getItemLayoutID() {
         return R.layout.item_cardlicense_child;
     }
 
