@@ -87,6 +87,37 @@ ListView,GridView,RecyclerView用法相同
 ```
 注意：只添加一个ItemViewDelegate相当于单种Item类型的使用。
 
+## ExpandableListView的使用 ##
+
+#### CommonExpandableAdapter(CommonExpandableAdapter继承BaseExpandableListAdapter)： ####
+```java
+    HashMap<GroupModel, List<DataModel>> datas = new HashMap<>();
+    expandableListView.setAdapter(new CommonExpandableAdapter<GroupModel, DataModel>(datas) {
+        @Override
+        protected int getGroupLayoutID() {
+            return R.layout.item_layout_group;
+        }
+
+        @Override
+        public int getItemLayoutID() {
+            return R.layout.item_layout_child;
+        }
+
+        @Override
+        protected void convertGroup(ViewHolder holder, GroupModel group, List<DataModel> childs, int groupPosition) {
+            holder.setText(R.id.group_name, group.getName());
+            holder.setText(R.id.group_content, group.getContent());
+        }
+
+        @Override
+        protected void convertChild(ViewHolder holder, DataModel child, int groupPosition, int childPosition) {
+            holder.setText(R.id.child_name, child.getName());
+            holder.setText(R.id.child_content, child.getContent());
+            holder.setImageResource(R.id.child_icon, child.getIcon());
+        }
+    });
+```
+
 ## ViewPager的使用 ##
 
 #### CommonPagerAdapter(CommonPagerAdapter继承PagerAdapter)： ####
