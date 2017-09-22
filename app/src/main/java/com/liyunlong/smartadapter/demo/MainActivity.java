@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.expandablelistview).setOnClickListener(this);
         findViewById(R.id.listview_single_multi).setOnClickListener(this);
         findViewById(R.id.recycleview_single_multi).setOnClickListener(this);
         findViewById(R.id.recycleview_header_footer).setOnClickListener(this);
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.expandablelistview:
+                startActivity(new Intent(this, ExpandableListViewActivity.class));
+                break;
             case R.id.listview_single_multi:
                 startActivity(new Intent(this, ListViewActivity.class));
                 break;

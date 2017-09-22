@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ExpandableListViewActivity"
+            android:label="@string/expandablelistview" />
+        <activity
             android:name=".ListViewActivity"
             android:label="@string/listview_single_multi" />
         <activity
