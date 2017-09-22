@@ -26,7 +26,7 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
     /** 上下文 */
     private Context mContext;
     /** 数据源 */
-    private List<DataType> mDatas = new ArrayList<>();
+    private final List<DataType> mDatas = new ArrayList<>();
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
 

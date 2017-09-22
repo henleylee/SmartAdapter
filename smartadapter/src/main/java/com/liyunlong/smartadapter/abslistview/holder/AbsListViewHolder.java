@@ -17,12 +17,12 @@ import com.liyunlong.smartadapter.common.ViewHolder;
 public final class AbsListViewHolder {
 
     private final View mConvertView;
-    private final ViewHolder mHelper;
+    private final ViewHolder mHolder;
 
     private AbsListViewHolder(ViewGroup parent, @LayoutRes int layoutId) {
         this.mConvertView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         this.mConvertView.setTag(this);
-        this.mHelper = ViewHolder.creat(mConvertView);
+        this.mHolder = ViewHolder.creat(mConvertView);
     }
 
     /**
@@ -45,7 +45,7 @@ public final class AbsListViewHolder {
         return mConvertView;
     }
 
-    public ViewHolder getViewHelper() {
-        return mHelper;
+    public ViewHolder getrViewHolder() {
+        return mHolder;
     }
 }

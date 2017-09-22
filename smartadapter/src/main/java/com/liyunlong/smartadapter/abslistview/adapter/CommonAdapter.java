@@ -24,7 +24,7 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
     /** 上下文 */
     private Context mContext;
     /** 数据源 */
-    private List<DataType> mDatas = new ArrayList<>();
+    private final List<DataType> mDatas = new ArrayList<>();
 
     public CommonAdapter(Collection<DataType> datas) {
         if (datas == null) {
@@ -123,7 +123,7 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
         }
         int itemLayoutID = getItemLayoutID(getItemViewType(position));
         AbsListViewHolder viewHolder = AbsListViewHolder.getViewHolder(convertView, parent, itemLayoutID);
-        convert(viewHolder.getViewHelper(), getItem(position), position);
+        convert(viewHolder.getrViewHolder(), getItem(position), position);
         return viewHolder.getConvertView();
     }
 
