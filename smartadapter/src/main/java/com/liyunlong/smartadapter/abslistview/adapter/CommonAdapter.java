@@ -24,16 +24,13 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
     /** 上下文 */
     private Context mContext;
     /** 数据源 */
-    private List<DataType> mDatas;
+    private List<DataType> mDatas = new ArrayList<>();
 
     public CommonAdapter(Collection<DataType> datas) {
         if (datas == null) {
-            this.mDatas = new ArrayList<>();
-        } else if (datas instanceof List) {
-            this.mDatas = (List<DataType>) datas;
-        } else {
-            this.mDatas = new ArrayList<>(datas);
+            datas = new ArrayList<>(0);
         }
+        this.mDatas.addAll(datas);
     }
 
     @Override
@@ -51,7 +48,8 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
         if (datas == null) {
             datas = new ArrayList<>(0);
         }
-        this.mDatas = datas;
+        this.mDatas.clear();
+        this.mDatas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
