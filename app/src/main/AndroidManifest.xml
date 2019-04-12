@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.liyunlong.smartadapter.demo">
+    package="com.henley.smartadapter.demo">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.henley.smartadapter.demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,19 +17,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ExpandableListViewActivity"
+            android:name="com.henley.smartadapter.demo.ExpandableListViewActivity"
             android:label="@string/expandablelistview" />
         <activity
-            android:name=".ListViewActivity"
+            android:name="com.henley.smartadapter.demo.ListViewActivity"
             android:label="@string/listview_single_multi" />
         <activity
-            android:name=".RecycleViewActivity"
+            android:name="com.henley.smartadapter.demo.RecycleViewActivity"
             android:label="@string/recycleview_single_multi" />
         <activity
-            android:name=".HeaderAndFooterWrapperActivity"
+            android:name="com.henley.smartadapter.demo.HeaderAndFooterWrapperActivity"
             android:label="@string/recycleview_header_footer" />
         <activity
-            android:name=".EmptyViewWrapperActivity"
+            android:name="com.henley.smartadapter.demo.EmptyViewWrapperActivity"
             android:label="@string/recycleview_emptyview" />
     </application>
 
