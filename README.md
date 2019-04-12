@@ -1,5 +1,9 @@
-# SmartAdapter-master
+# SmartAdapter —— Android 万能Adapter
 Android 万能的Adapter for ListView,GridView,RecyclerView,ViewPager等，支持多种Item类型的情况。
+
+## APK Demo ##
+
+下载 [APK-Demo](https://github.com/HenleyLee/SmartAdapter/raw/master/app/app-release.apk)
 
 ## ViewHolder类介绍 ##
 ViewHolder中封装了大量的常用的方法，实现了View的复用，省去了自己编写ViewHolder等大量的重复的代码。

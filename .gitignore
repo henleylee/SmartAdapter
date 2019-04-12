@@ -1,7 +1,6 @@
 #the beginning of .gitignore
 
 # Built application files
-*.apk
 *.ap_
 
 # Files for the Dalvik VM
@@ -19,7 +18,6 @@ gen/
 gradle.properties
 build/
 */build/
-.externalNativeBuild
 
 # Local configuration file (sdk path, etc)
 local.properties
