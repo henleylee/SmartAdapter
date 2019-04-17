@@ -25,3 +25,5 @@ dependencies {
     compileOnly "com.android.support:recyclerview-v7:$supportVersion"
     compileOnly "com.android.support:support-fragment:$supportVersion"
 }
+
+apply from: '../gradle/bintray.gradle'

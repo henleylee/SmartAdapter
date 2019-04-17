@@ -43,5 +43,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:recyclerview-v7:$supportVersion"
-    implementation project(':smartadapter')
+//    implementation project(':smartadapter')
+    implementation 'com.henley.smartadapter:smartadapter:1.0.0'
 }

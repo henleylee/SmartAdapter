@@ -1,0 +1,27 @@
+apply plugin: 'com.novoda.bintray-release'
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+
+def siteUrl = 'https://github.com/HenleyLee/SmartAdapter'
+
+publish {
+    userOrg = 'henleylee'
+    groupId = 'com.henley.smartadapter'
+    artifactId = 'smartadapter'
+    publishVersion = '1.0.0'
+    desc = 'Android 万能的 Adapter for ListView、GridView、RecyclerView、ViewPager 等，支持多种Item类型的情况。'
+    website = siteUrl
+}
