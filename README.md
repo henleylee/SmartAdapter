@@ -1,7 +1,15 @@
 # SmartAdapter —— Android 万能Adapter
 Android 万能的Adapter for ListView,GridView,RecyclerView,ViewPager等，支持多种Item类型的情况。
 
-## APK Demo ##
+## Download ##
+### Gradle ###
+```gradle
+dependencies {
+    implementation 'com.henley.smartadapter:smartadapter:1.0.0'
+}
+```
+
+### APK Demo ###
 
 下载 [APK-Demo](https://github.com/HenleyLee/SmartAdapter/raw/master/app/app-release.apk)
 
