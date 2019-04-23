@@ -44,5 +44,5 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:recyclerview-v7:$supportVersion"
 //    implementation project(':smartadapter')
-    implementation 'com.henley.smartadapter:smartadapter:1.0.0'
+    implementation 'com.henley.android:smartadapter:1.0.0'
 }

@@ -19,9 +19,10 @@ def siteUrl = 'https://github.com/HenleyLee/SmartAdapter'
 
 publish {
     userOrg = 'henleylee'
-    groupId = 'com.henley.smartadapter'
+    groupId = 'com.henley.android'
     artifactId = 'smartadapter'
     publishVersion = '1.0.0'
+    uploadName = 'SmartAdapter'
     desc = 'Android 万能的 Adapter for ListView、GridView、RecyclerView、ViewPager 等，支持多种Item类型的情况。'
     website = siteUrl
 }
