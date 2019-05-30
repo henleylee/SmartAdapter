@@ -1,5 +1,6 @@
 package com.henley.smartadapter.viewpager;
 
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
@@ -19,7 +20,7 @@ public class CommonPagerAdapter extends PagerAdapter {
 
     private List<? extends View> mList;
     private List<? extends CharSequence> mTitles;
-    protected SparseArray<View> mSparseViews;
+    private SparseArray<View> mSparseViews;
 
     public CommonPagerAdapter(List<? extends View> list) {
         this.mList = list;
@@ -64,12 +65,13 @@ public class CommonPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object; // 来判断显示的是否是同一View
     }
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
         // 当要显示的View可以进行缓存的时候，会调用这个方法进行显示View的初始化，我们将要显示的View加入到ViewGroup中，然后作为返回值返回即可
         View view = null;
         if (mSparseViews == null) {
@@ -86,9 +88,10 @@ public class CommonPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         // PagerAdapter默认只缓存三个View，如果滑动的View超出了缓存的范围，就销毁掉
         View view = mList.get(position);
         container.removeView(view);
     }
+
 }
