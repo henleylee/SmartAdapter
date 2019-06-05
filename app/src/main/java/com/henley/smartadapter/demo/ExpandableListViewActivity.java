@@ -1,8 +1,8 @@
 package com.henley.smartadapter.demo;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
 import com.henley.smartadapter.demo.adapter.ExpandableAdapter;

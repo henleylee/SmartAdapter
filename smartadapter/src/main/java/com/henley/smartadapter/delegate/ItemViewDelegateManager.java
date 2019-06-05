@@ -1,6 +1,8 @@
 package com.henley.smartadapter.delegate;
 
-import android.support.v4.util.SparseArrayCompat;
+import android.util.SparseArray;
+
+import androidx.collection.SparseArrayCompat;
 
 import com.henley.smartadapter.common.ViewHolder;
 
@@ -13,7 +15,7 @@ import com.henley.smartadapter.common.ViewHolder;
  */
 public class ItemViewDelegateManager<DataType> {
 
-    private SparseArrayCompat<ItemViewDelegate<DataType>> delegates = new SparseArrayCompat<>();
+    private SparseArray<ItemViewDelegate<DataType>> delegates = new SparseArray<>();
 
     /**
      * 添加{@link ItemViewDelegate}
@@ -115,7 +117,11 @@ public class ItemViewDelegateManager<DataType> {
      * @param viewType ItemView的类型
      */
     public int getItemViewLayoutId(int viewType) {
-        return delegates.get(viewType).getItemLayoutID();
+        ItemViewDelegate<DataType> itemViewDelegate = delegates.get(viewType);
+        if (itemViewDelegate != null) {
+            return itemViewDelegate.getItemLayoutID();
+        }
+        return 0;
     }
 
     /**

@@ -1,10 +1,11 @@
 package com.henley.smartadapter.abslistview.holder;
 
-import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+
+import androidx.annotation.LayoutRes;
 
 import com.henley.smartadapter.common.ViewHolder;
 

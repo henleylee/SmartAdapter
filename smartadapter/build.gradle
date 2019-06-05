@@ -22,8 +22,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly "com.android.support:recyclerview-v7:$supportVersion"
-    compileOnly "com.android.support:support-fragment:$supportVersion"
+    compileOnly 'androidx.recyclerview:recyclerview:1.0.0'
+    compileOnly 'androidx.fragment:fragment:1.0.0'
 }
 
 apply from: '../gradle/bintray.gradle'
