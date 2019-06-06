@@ -5,7 +5,7 @@ Android 万能的Adapter for ListView,GridView,RecyclerView,ViewPager等，支�
 ### Gradle ###
 ```gradle
 dependencies {
-    implementation 'com.henley.android:smartadapter:1.0.0'
+    implementation 'com.henley.android:smartadapter:1.0.1'
 }
 ```
 
