@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.henley.smartadapter.common.ViewHolder;
 
@@ -20,12 +22,6 @@ public final class AbsListViewHolder {
     private final View mConvertView;
     private final ViewHolder mHolder;
 
-    private AbsListViewHolder(ViewGroup parent, @LayoutRes int layoutId) {
-        this.mConvertView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-        this.mConvertView.setTag(this);
-        this.mHolder = ViewHolder.creat(mConvertView);
-    }
-
     /**
      * 返回一个ViewHolder对象
      *
@@ -34,7 +30,7 @@ public final class AbsListViewHolder {
      * @param layoutId
      * @return
      */
-    public static AbsListViewHolder getViewHolder(View convertView, ViewGroup parent, @LayoutRes int layoutId) {
+    public static AbsListViewHolder getViewHolder(@Nullable View convertView, @NonNull ViewGroup parent, @LayoutRes int layoutId) {
         if (convertView == null) {
             return new AbsListViewHolder(parent, layoutId);
         } else {
@@ -42,11 +38,17 @@ public final class AbsListViewHolder {
         }
     }
 
+    private AbsListViewHolder(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
+        this.mConvertView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
+        this.mConvertView.setTag(this);
+        this.mHolder = ViewHolder.creat(mConvertView);
+    }
+
     public View getConvertView() {
         return mConvertView;
     }
 
-    public ViewHolder getrViewHolder() {
+    public ViewHolder getViewHolder() {
         return mHolder;
     }
 }

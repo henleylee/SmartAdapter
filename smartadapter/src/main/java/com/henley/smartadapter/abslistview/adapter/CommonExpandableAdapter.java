@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.abslistview.holder.AbsListViewHolder;
 import com.henley.smartadapter.common.IAdapter;
 import com.henley.smartadapter.common.ViewHolder;
@@ -110,7 +112,7 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
     }
 
     @Override
-    public void removeAll(List datas) {
+    public void removeAll(List<List<DataType>> datas) {
         if (datas == null || datas.size() == 0) {
             return;
         }
@@ -126,12 +128,12 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
     }
 
     public GroupType getGroupData(int groupPosition) {
-        return mGroups == null ? null : mGroups.get(groupPosition);
+        return mGroups.get(groupPosition);
     }
 
     @Override
     public int getGroupCount() {
-        return mDatas == null ? 0 : mDatas.size();
+        return mDatas.size();
     }
 
     @Override
@@ -141,7 +143,7 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
 
     @Override
     public List<DataType> getGroup(int groupPosition) {
-        return mDatas == null ? null : mDatas.get(groupPosition);
+        return mDatas.get(groupPosition);
     }
 
     @Override
@@ -171,8 +173,8 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
         }
         int groupLayoutID = getGroupLayoutID(getGroupType(groupPosition));
         AbsListViewHolder viewHolder = AbsListViewHolder.getViewHolder(convertView, parent, groupLayoutID);
-        convert(viewHolder.getrViewHolder(), getGroup(groupPosition), groupPosition);
         mGroupExpandedMap.put(groupPosition, isExpanded);
+        convertGroup(viewHolder.getViewHolder(), getGroupData(groupPosition), getGroup(groupPosition), groupPosition, isExpanded);
         return viewHolder.getConvertView();
     }
 
@@ -183,7 +185,7 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
         }
         int childLayoutID = getItemLayoutID(getChildType(groupPosition, childPosition));
         AbsListViewHolder viewHolder = AbsListViewHolder.getViewHolder(convertView, parent, childLayoutID);
-        convertChild(viewHolder.getrViewHolder(), getChild(groupPosition, childPosition), groupPosition, childPosition);
+        convertChild(viewHolder.getViewHolder(), getChild(groupPosition, childPosition), groupPosition, childPosition);
         return viewHolder.getConvertView();
     }
 
@@ -217,16 +219,9 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
     @Override
     public abstract int getItemLayoutID();
 
-    /**
-     * Group视图数据和事件绑定
-     *
-     * @param holder        ViewHolder对象
-     * @param childs        Group对应的Child数据
-     * @param groupPosition Group索引
-     */
     @Override
-    public void convert(ViewHolder holder, List<DataType> childs, int groupPosition) {
-        convertGroup(holder, getGroupData(groupPosition), childs, groupPosition);
+    public final void convert(@NonNull ViewHolder holder, List<DataType> childs, int groupPosition) {
+
     }
 
     /**
@@ -237,7 +232,7 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
      * @param childs        Group对应的Child数据
      * @param groupPosition Group索引
      */
-    protected abstract void convertGroup(ViewHolder holder, GroupType group, List<DataType> childs, int groupPosition);
+    protected abstract void convertGroup(@NonNull ViewHolder holder, GroupType group, List<DataType> childs, int groupPosition, boolean isExpanded);
 
     /**
      * Child视图数据和事件绑定
@@ -247,7 +242,7 @@ public abstract class CommonExpandableAdapter<GroupType, DataType> extends BaseE
      * @param groupPosition Group索引
      * @param childPosition Child索引
      */
-    protected abstract void convertChild(ViewHolder holder, DataType child, int groupPosition, int childPosition);
+    protected abstract void convertChild(@NonNull ViewHolder holder, DataType child, int groupPosition, int childPosition);
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {

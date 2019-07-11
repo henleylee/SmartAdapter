@@ -1,7 +1,9 @@
 package com.henley.smartadapter.recycleview.listener;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link RecyclerView}的Item点击事件监听
@@ -11,5 +13,5 @@ import android.view.View;
  */
 public interface OnItemClickListener {
 
-    void onItemClick(View view, RecyclerView.ViewHolder holder, int position);
+    void onItemClick(@NonNull View view, @NonNull RecyclerView.ViewHolder holder, int position);
 }

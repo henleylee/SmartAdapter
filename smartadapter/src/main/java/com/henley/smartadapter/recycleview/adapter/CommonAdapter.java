@@ -1,9 +1,11 @@
 package com.henley.smartadapter.recycleview.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.henley.smartadapter.common.IRecycleViewAdapter;
 import com.henley.smartadapter.recycleview.holder.RecyclerViewHolder;
@@ -23,9 +25,13 @@ import java.util.List;
  */
 public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<RecyclerViewHolder> implements IRecycleViewAdapter<DataType> {
 
-    /** 上下文 */
+    /**
+     * 上下文
+     */
     private Context mContext;
-    /** 数据源 */
+    /**
+     * 数据源
+     */
     private final List<DataType> mDatas = new ArrayList<>();
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
@@ -134,16 +140,16 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
 
     @Override
     public DataType getItem(int position) {
-        return mDatas == null ? null : mDatas.get(position);
+        return mDatas.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return mDatas == null ? 0 : mDatas.size();
+        return mDatas.size();
     }
 
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
@@ -152,7 +158,7 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
         final int finalPosition = holder.getAdapterPosition();
         setItemViewListener(holder, finalPosition);
         convert(holder.getViewHolder(), getItem(position), finalPosition);
@@ -164,7 +170,7 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
      * @param holder   {@link RecyclerViewHolder}对象
      * @param position 点击的Item的索引
      */
-    private void setItemViewListener(final RecyclerViewHolder holder, final int position) {
+    private void setItemViewListener(@NonNull final RecyclerViewHolder holder, final int position) {
         if (!areAllItemsEnabled() && !isEnabled(position)) {
             return;
         }

@@ -103,12 +103,12 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
 
     @Override
     public int getCount() {
-        return mDatas == null ? 0 : mDatas.size();
+        return mDatas.size();
     }
 
     @Override
     public DataType getItem(int position) {
-        return mDatas == null ? null : mDatas.get(position);
+        return mDatas.get(position);
     }
 
     @Override
@@ -123,7 +123,7 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
         }
         int itemLayoutID = getItemLayoutID(getItemViewType(position));
         AbsListViewHolder viewHolder = AbsListViewHolder.getViewHolder(convertView, parent, itemLayoutID);
-        convert(viewHolder.getrViewHolder(), getItem(position), position);
+        convert(viewHolder.getViewHolder(), getItem(position), position);
         return viewHolder.getConvertView();
     }
 

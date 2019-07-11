@@ -2,6 +2,7 @@ package com.henley.smartadapter.delegate;
 
 import android.util.SparseArray;
 
+import androidx.annotation.NonNull;
 import androidx.collection.SparseArrayCompat;
 
 import com.henley.smartadapter.common.ViewHolder;
@@ -85,7 +86,7 @@ public class ItemViewDelegateManager<DataType> {
         int delegatesCount = delegates.size();
         for (int index = 0; index < delegatesCount; index++) {
             ItemViewDelegate<DataType> delegate = delegates.valueAt(index);
-            if (delegate.isForViewType(data, position)) {
+            if (delegate != null && delegate.isForViewType(data, position)) {
                 return delegates.keyAt(index);
             }
         }
@@ -99,11 +100,11 @@ public class ItemViewDelegateManager<DataType> {
      * @param data     数据
      * @param position 位置索引
      */
-    public void convert(ViewHolder holder, DataType data, int position) {
+    public void convert(@NonNull ViewHolder holder, DataType data, int position) {
         int delegatesCount = delegates.size();
         for (int index = 0; index < delegatesCount; index++) {
             ItemViewDelegate<DataType> delegate = delegates.valueAt(index);
-            if (delegate.isForViewType(data, position)) {
+            if (delegate != null && delegate.isForViewType(data, position)) {
                 delegate.convert(holder, data, position);
                 return;
             }

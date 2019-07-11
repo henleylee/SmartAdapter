@@ -1,7 +1,9 @@
 package com.henley.smartadapter.common;
 
 import android.content.Context;
+
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 
 import java.util.List;
 
@@ -78,6 +80,6 @@ public interface IAdapter<DataType> {
     /**
      * 数据和事件绑定
      */
-    void convert(ViewHolder holder, DataType data, int position);
+    void convert(@NonNull ViewHolder holder, DataType data, int position);
 
 }

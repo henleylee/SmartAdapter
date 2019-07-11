@@ -1,11 +1,12 @@
 package com.henley.smartadapter.recycleview.wrapper;
 
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.henley.smartadapter.recycleview.holder.RecyclerViewHolder;
 
@@ -63,7 +64,7 @@ public class EmptyViewWrapper extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (isEmpty()) {
             RecyclerViewHolder holder;
             if (mEmptyView != null) {

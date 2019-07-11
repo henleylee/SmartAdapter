@@ -2,6 +2,8 @@ package com.henley.smartadapter.abslistview.adapter;
 
 import android.widget.AbsListView;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.delegate.IAdapterDelegate;
 import com.henley.smartadapter.delegate.ItemViewDelegate;
@@ -31,7 +33,7 @@ public class MultiItemTypeAdapter<DataType> extends CommonAdapter<DataType> impl
     }
 
     @Override
-    public void addItemViewDelegate(int viewType, ItemViewDelegate<DataType> delegate) {
+    public void addItemViewDelegate(int viewType, @NonNull ItemViewDelegate<DataType> delegate) {
         mItemViewDelegateManager.addDelegate(viewType, delegate);
     }
 
@@ -41,7 +43,7 @@ public class MultiItemTypeAdapter<DataType> extends CommonAdapter<DataType> impl
     }
 
     @Override
-    public ItemViewDelegateManager<DataType> removeDelegate(ItemViewDelegate<DataType> delegate) {
+    public ItemViewDelegateManager<DataType> removeDelegate(@NonNull ItemViewDelegate<DataType> delegate) {
         return mItemViewDelegateManager.removeDelegate(delegate);
     }
 
@@ -80,7 +82,7 @@ public class MultiItemTypeAdapter<DataType> extends CommonAdapter<DataType> impl
     }
 
     @Override
-    public void convert(ViewHolder holder, DataType data, int position) {
+    public void convert(@NonNull ViewHolder holder, DataType data, int position) {
         mItemViewDelegateManager.convert(holder, data, position);
     }
 

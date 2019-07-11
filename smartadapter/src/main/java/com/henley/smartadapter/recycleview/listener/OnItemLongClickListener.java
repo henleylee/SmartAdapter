@@ -1,7 +1,9 @@
 package com.henley.smartadapter.recycleview.listener;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link RecyclerView}的Item长点击事件监听
@@ -11,6 +13,6 @@ import android.view.View;
  */
 public interface OnItemLongClickListener {
 
-    boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position);
+    boolean onItemLongClick(@NonNull View view, @NonNull RecyclerView.ViewHolder holder, int position);
 
 }

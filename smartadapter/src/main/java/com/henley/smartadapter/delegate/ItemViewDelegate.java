@@ -1,5 +1,7 @@
 package com.henley.smartadapter.delegate;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.common.ViewHolder;
 
 /**
@@ -31,6 +33,6 @@ public interface ItemViewDelegate<DataType> {
      * @param data     数据
      * @param position 位置索引
      */
-    void convert(ViewHolder holder, DataType data, int position);
+    void convert(@NonNull ViewHolder holder, DataType data, int position);
 
 }

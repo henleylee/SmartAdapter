@@ -1,5 +1,7 @@
 package com.henley.smartadapter.delegate;
 
+import androidx.annotation.NonNull;
+
 /**
  * 适配器的代理相关方法接口
  *
@@ -14,7 +16,7 @@ public interface IAdapterDelegate<DataType> {
      *
      * @param delegate {@link ItemViewDelegate}对象
      */
-    void addItemViewDelegate(ItemViewDelegate<DataType> delegate);
+    void addItemViewDelegate(@NonNull ItemViewDelegate<DataType> delegate);
 
     /**
      * 添加{@link ItemViewDelegate}
@@ -22,7 +24,7 @@ public interface IAdapterDelegate<DataType> {
      * @param viewType ItemView的类型
      * @param delegate {@link ItemViewDelegate}对象
      */
-    void addItemViewDelegate(int viewType, ItemViewDelegate<DataType> delegate);
+    void addItemViewDelegate(int viewType, @NonNull ItemViewDelegate<DataType> delegate);
 
     /**
      * 删除{@link ItemViewDelegate}
@@ -36,7 +38,7 @@ public interface IAdapterDelegate<DataType> {
      *
      * @param delegate {@link ItemViewDelegate}对象(SparseArrayCompat的Value)
      */
-    ItemViewDelegateManager<DataType> removeDelegate(ItemViewDelegate<DataType> delegate);
+    ItemViewDelegateManager<DataType> removeDelegate(@NonNull ItemViewDelegate<DataType> delegate);
 
     /**
      * 是否使用{@link ItemViewDelegateManager}(即{@link ItemViewDelegate}的数量是否大于0)
