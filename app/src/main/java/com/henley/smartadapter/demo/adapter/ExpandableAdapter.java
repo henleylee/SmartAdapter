@@ -2,6 +2,8 @@ package com.henley.smartadapter.demo.adapter;
 
 import android.graphics.Color;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.abslistview.adapter.CommonExpandableAdapter;
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.demo.CardLicense;
@@ -35,13 +37,13 @@ public class ExpandableAdapter extends CommonExpandableAdapter<String, CardLicen
     }
 
     @Override
-    protected void convertGroup(ViewHolder holder, String group, List<CardLicense> childs, int groupPosition) {
+    protected void convertGroup(@NonNull ViewHolder holder, String group, List<CardLicense> childs, int groupPosition, boolean isExpanded) {
         holder.setText(R.id.province, group);
         holder.setText(R.id.child_count, getChildrenCount(groupPosition) + "种");
     }
 
     @Override
-    protected void convertChild(ViewHolder holder, CardLicense child, int groupPosition, int childPosition) {
+    protected void convertChild(@NonNull ViewHolder holder, CardLicense child, int groupPosition, int childPosition) {
         holder.setText(R.id.textview, child.getCity() + "(" + child.getCode() + ")");
         holder.setTextColor(R.id.textview, Color.DKGRAY);
     }
