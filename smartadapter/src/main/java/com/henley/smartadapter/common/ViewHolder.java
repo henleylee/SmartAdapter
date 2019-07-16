@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.core.text.util.LinkifyCompat;
+import androidx.core.view.ViewCompat;
 import androidx.core.widget.ImageViewCompat;
 
 /**
@@ -312,17 +313,16 @@ public final class ViewHolder {
      */
     public ViewHolder setBackground(@IdRes int viewId, Drawable background) {
         View view = getView(viewId);
-        view.setBackground(background);
+        ViewCompat.setBackground(view, background);
         return this;
     }
 
     /**
      * 为{@link ImageView}设置背景图片
      */
-    @Deprecated
     public ViewHolder setBackgroundDrawable(@IdRes int viewId, Drawable background) {
         View view = getView(viewId);
-        view.setBackgroundDrawable(background);
+        ViewCompat.setBackground(view, background);
         return this;
     }
 
