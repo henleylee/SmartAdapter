@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
@@ -19,23 +20,23 @@ import java.util.List;
  */
 public class CommonPagerAdapter extends PagerAdapter {
 
-    private List<? extends View> mList;
+    private List<? extends View> mViews;
     private List<? extends CharSequence> mTitles;
     private SparseArray<View> mSparseViews;
 
-    public CommonPagerAdapter(List<? extends View> list) {
-        this.mList = list;
+    public CommonPagerAdapter(List<? extends View> views) {
+        this.mViews = views;
     }
 
-    public CommonPagerAdapter(List<? extends View> list, CharSequence... titles) {
-        this.mList = list;
+    public CommonPagerAdapter(List<? extends View> views, CharSequence... titles) {
+        this.mViews = views;
         if (titles != null && titles.length > 0) {
             this.mTitles = Arrays.asList(titles);
         }
     }
 
-    public CommonPagerAdapter(List<? extends View> mList, List<? extends CharSequence> titles) {
-        this.mList = mList;
+    public CommonPagerAdapter(List<? extends View> views, List<? extends CharSequence> titles) {
+        this.mViews = views;
         this.mTitles = titles;
     }
 
@@ -46,15 +47,16 @@ public class CommonPagerAdapter extends PagerAdapter {
         if (mSparseViews != null) {
             mSparseViews.clear();
         }
-        this.mList = list;
+        this.mViews = list;
         this.notifyDataSetChanged();
 
     }
 
     public View getItem(int position) {
-        return mList == null ? null : mList.get(position);
+        return mViews == null ? null : mViews.get(position);
     }
 
+    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return mTitles == null ? null : mTitles.get(position);
@@ -62,7 +64,7 @@ public class CommonPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mList == null ? 0 : mList.size();
+        return mViews == null ? 0 : mViews.size();
     }
 
     @Override
@@ -81,7 +83,7 @@ public class CommonPagerAdapter extends PagerAdapter {
             view = mSparseViews.get(position);
         }
         if (view == null) {
-            view = mList.get(position);
+            view = mViews.get(position);
             mSparseViews.put(position, view);
         }
         container.addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -91,7 +93,7 @@ public class CommonPagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         // PagerAdapter默认只缓存三个View，如果滑动的View超出了缓存的范围，就销毁掉
-        View view = mList.get(position);
+        View view = mViews.get(position);
         container.removeView(view);
     }
 

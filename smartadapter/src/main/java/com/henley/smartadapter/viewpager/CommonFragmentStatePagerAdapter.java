@@ -26,12 +26,22 @@ public class CommonFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
     private List<? extends Fragment> mFragments;
     private List<? extends CharSequence> mTitles;
 
-    public CommonFragmentStatePagerAdapter(FragmentManager fm, List<? extends Fragment> fragments) {
+    public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, @NonNull List<? extends Fragment> fragments) {
         this(fm, fragments, null);
     }
 
-    public CommonFragmentStatePagerAdapter(FragmentManager fm, List<? extends Fragment> fragments, List<? extends CharSequence> titles) {
+    public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, @NonNull List<? extends Fragment> fragments, List<? extends CharSequence> titles) {
         super(fm);
+        this.mFragments = fragments;
+        this.mTitles = titles;
+    }
+
+    public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, int behavior, @NonNull List<? extends Fragment> fragments) {
+        this(fm, behavior, fragments, null);
+    }
+
+    public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, int behavior, @NonNull List<? extends Fragment> fragments, List<? extends CharSequence> titles) {
+        super(fm, behavior);
         this.mFragments = fragments;
         this.mTitles = titles;
     }
@@ -42,9 +52,10 @@ public class CommonFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
         return mTitles == null ? null : mTitles.get(position);
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
-        return mFragments == null ? null : mFragments.get(position);
+        return mFragments.get(position);
     }
 
     @Override
