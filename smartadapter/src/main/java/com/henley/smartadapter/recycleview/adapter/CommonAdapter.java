@@ -4,9 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.henley.smartadapter.common.IRecycleViewAdapter;
 import com.henley.smartadapter.recycleview.holder.RecyclerViewHolder;
 import com.henley.smartadapter.recycleview.listener.OnItemClickListener;
@@ -15,6 +12,9 @@ import com.henley.smartadapter.recycleview.listener.OnItemLongClickListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link RecyclerView}适配器
@@ -25,13 +25,9 @@ import java.util.List;
  */
 public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<RecyclerViewHolder> implements IRecycleViewAdapter<DataType> {
 
-    /**
-     * 上下文
-     */
+    /** 上下文 */
     private Context mContext;
-    /**
-     * 数据源
-     */
+    /** 数据源 */
     private final List<DataType> mDatas = new ArrayList<>();
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
@@ -148,6 +144,7 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
         return mDatas.size();
     }
 
+    @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (mContext == null) {

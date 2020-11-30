@@ -1,14 +1,14 @@
 package com.henley.smartadapter.recycleview.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.delegate.IAdapterDelegate;
 import com.henley.smartadapter.delegate.ItemViewDelegate;
 import com.henley.smartadapter.delegate.ItemViewDelegateManager;
 
 import java.util.Collection;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link RecyclerView}适配器(用于多种ItemView类型)
@@ -19,8 +19,7 @@ import java.util.Collection;
  */
 public class MultiItemTypeAdapter<DataType> extends CommonAdapter<DataType> implements IAdapterDelegate<DataType> {
 
-
-    private ItemViewDelegateManager<DataType> mItemViewDelegateManager = new ItemViewDelegateManager<>();
+    private final ItemViewDelegateManager<DataType> mItemViewDelegateManager = new ItemViewDelegateManager<>();
 
     public MultiItemTypeAdapter(Collection<DataType> datas) {
         super(datas);

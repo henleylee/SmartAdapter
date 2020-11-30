@@ -21,13 +21,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.FloatRange;
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
+import androidx.annotation.Px;
 import androidx.annotation.StringRes;
-import androidx.core.content.ContextCompat;
 import androidx.core.text.util.LinkifyCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.ImageViewCompat;
@@ -40,9 +39,9 @@ import androidx.core.widget.ImageViewCompat;
  */
 public final class ViewHolder {
 
-    private View mItemView;
-    private Context mContext;
-    private SparseArray<View> mViews;
+    private final View mItemView;
+    private final Context mContext;
+    private final SparseArray<View> mViews;
 
     /**
      * 创建{@link ViewHolder}
@@ -98,8 +97,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本
      */
     public ViewHolder setText(@IdRes int viewId, CharSequence text) {
-        TextView textView = getView(viewId);
-        textView.setText(text);
+        ((TextView) getView(viewId)).setText(text);
         return this;
     }
 
@@ -107,8 +105,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本
      */
     public ViewHolder setText(@IdRes int viewId, CharSequence text, TextView.BufferType type) {
-        TextView textView = getView(viewId);
-        textView.setText(text, type);
+        ((TextView) getView(viewId)).setText(text, type);
         return this;
     }
 
@@ -116,8 +113,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本
      */
     public ViewHolder setText(@IdRes int viewId, char[] text, int start, int len) {
-        TextView textView = getView(viewId);
-        textView.setText(text, start, len);
+        ((TextView) getView(viewId)).setText(text, start, len);
         return this;
     }
 
@@ -125,8 +121,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本
      */
     public ViewHolder setText(@IdRes int viewId, @StringRes int resId) {
-        TextView textView = getView(viewId);
-        textView.setText(resId);
+        ((TextView) getView(viewId)).setText(resId);
         return this;
     }
 
@@ -134,8 +129,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本
      */
     public ViewHolder setText(@IdRes int viewId, @StringRes int resId, TextView.BufferType type) {
-        TextView textView = getView(viewId);
-        textView.setText(resId, type);
+        ((TextView) getView(viewId)).setText(resId, type);
         return this;
     }
 
@@ -143,8 +137,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本为空时显示的文本
      */
     public ViewHolder setHint(@IdRes int viewId, CharSequence text) {
-        TextView textView = getView(viewId);
-        textView.setHint(text);
+        ((TextView) getView(viewId)).setHint(text);
         return this;
     }
 
@@ -152,8 +145,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本为空时显示的文本
      */
     public ViewHolder setHint(@IdRes int viewId, @StringRes int resId) {
-        TextView textView = getView(viewId);
-        textView.setHint(resId);
+        ((TextView) getView(viewId)).setHint(resId);
         return this;
     }
 
@@ -161,8 +153,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本颜色
      */
     public ViewHolder setTextColor(@IdRes int viewId, @ColorInt int textColor) {
-        TextView view = getView(viewId);
-        view.setTextColor(textColor);
+        ((TextView) getView(viewId)).setTextColor(textColor);
         return this;
     }
 
@@ -170,17 +161,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置文本颜色
      */
     public ViewHolder setTextColor(@IdRes int viewId, ColorStateList colors) {
-        TextView view = getView(viewId);
-        view.setTextColor(colors);
-        return this;
-    }
-
-    /**
-     * 为{@link TextView}设置文本颜色
-     */
-    public ViewHolder setTextColorRes(@IdRes int viewId, @ColorRes int textColorRes) {
-        TextView view = getView(viewId);
-        view.setTextColor(ContextCompat.getColor(mContext, textColorRes));
+        ((TextView) getView(viewId)).setTextColor(colors);
         return this;
     }
 
@@ -188,8 +169,15 @@ public final class ViewHolder {
      * 为{@link TextView}设置输入类型
      */
     public ViewHolder setInputType(@IdRes int viewId, int type) {
-        TextView textView = getView(viewId);
-        textView.setInputType(type);
+        ((TextView) getView(viewId)).setInputType(type);
+        return this;
+    }
+
+    /**
+     * 为{@link TextView}设置高亮颜色
+     */
+    public ViewHolder setHighlightColor(@IdRes int viewId, @ColorInt int color) {
+        ((TextView) getView(viewId)).setHighlightColor(color);
         return this;
     }
 
@@ -197,8 +185,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置输入法窗口中的回车键的功能
      */
     public ViewHolder setImeOptions(@IdRes int viewId, int imeOptions) {
-        TextView textView = getView(viewId);
-        textView.setImeOptions(imeOptions);
+        ((TextView) getView(viewId)).setImeOptions(imeOptions);
         return this;
     }
 
@@ -206,8 +193,7 @@ public final class ViewHolder {
      * 为{@link TextView}设置超链接
      */
     public ViewHolder linkify(@IdRes int viewId, @LinkifyCompat.LinkifyMask int mask) {
-        TextView textView = getView(viewId);
-        Linkify.addLinks(textView, mask);
+        Linkify.addLinks(((TextView) getView(viewId)), mask);
         return this;
     }
 
@@ -229,8 +215,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置图片
      */
     public ViewHolder setImageResource(@IdRes int viewId, @DrawableRes int resId) {
-        ImageView imageView = getView(viewId);
-        imageView.setImageResource(resId);
+        ((ImageView) getView(viewId)).setImageResource(resId);
         return this;
     }
 
@@ -238,8 +223,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置图片
      */
     public ViewHolder setImageBitmap(@IdRes int viewId, Bitmap bitmap) {
-        ImageView imageView = getView(viewId);
-        imageView.setImageBitmap(bitmap);
+        ((ImageView) getView(viewId)).setImageBitmap(bitmap);
         return this;
     }
 
@@ -247,8 +231,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置图片
      */
     public ViewHolder setImageDrawable(@IdRes int viewId, @Nullable Drawable drawable) {
-        ImageView imageView = getView(viewId);
-        imageView.setImageDrawable(drawable);
+        ((ImageView) getView(viewId)).setImageDrawable(drawable);
         return this;
     }
 
@@ -256,8 +239,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置图片
      */
     public ViewHolder setImageURI(@IdRes int viewId, @Nullable Uri uri) {
-        ImageView imageView = getView(viewId);
-        imageView.setImageURI(uri);
+        ((ImageView) getView(viewId)).setImageURI(uri);
         return this;
     }
 
@@ -266,8 +248,7 @@ public final class ViewHolder {
      */
     @TargetApi(Build.VERSION_CODES.M)
     public ViewHolder setImageIcon(@IdRes int viewId, @Nullable Icon icon) {
-        ImageView imageView = getView(viewId);
-        imageView.setImageIcon(icon);
+        ((ImageView) getView(viewId)).setImageIcon(icon);
         return this;
     }
 
@@ -276,8 +257,7 @@ public final class ViewHolder {
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ViewHolder setImageTintList(@IdRes int viewId, @Nullable ColorStateList tint) {
-        ImageView imageView = getView(viewId);
-        ImageViewCompat.setImageTintList(imageView, tint);
+        ImageViewCompat.setImageTintList(((ImageView) getView(viewId)), tint);
         return this;
     }
 
@@ -285,8 +265,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置混合模式
      */
     public ViewHolder setImageTintMode(@IdRes int viewId, @Nullable PorterDuff.Mode tintMode) {
-        ImageView imageView = getView(viewId);
-        ImageViewCompat.setImageTintMode(imageView, tintMode);
+        ImageViewCompat.setImageTintMode(((ImageView) getView(viewId)), tintMode);
         return this;
     }
 
@@ -294,17 +273,15 @@ public final class ViewHolder {
      * 为{@link ImageView}设置背景颜色
      */
     public ViewHolder setBackgroundColor(@IdRes int viewId, @ColorInt int color) {
-        View view = getView(viewId);
-        view.setBackgroundColor(color);
+        getView(viewId).setBackgroundColor(color);
         return this;
     }
 
     /**
      * 为{@link ImageView}设置背景图片
      */
-    public ViewHolder setBackgroundResource(@IdRes int viewId, @DrawableRes int backgroundRes) {
-        View view = getView(viewId);
-        view.setBackgroundResource(backgroundRes);
+    public ViewHolder setBackgroundResource(@IdRes int viewId, @DrawableRes int resId) {
+        getView(viewId).setBackgroundResource(resId);
         return this;
     }
 
@@ -312,8 +289,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置背景图片
      */
     public ViewHolder setBackground(@IdRes int viewId, Drawable background) {
-        View view = getView(viewId);
-        ViewCompat.setBackground(view, background);
+        ViewCompat.setBackground(getView(viewId), background);
         return this;
     }
 
@@ -321,8 +297,7 @@ public final class ViewHolder {
      * 为{@link ImageView}设置背景图片
      */
     public ViewHolder setBackgroundDrawable(@IdRes int viewId, Drawable background) {
-        View view = getView(viewId);
-        ViewCompat.setBackground(view, background);
+        ViewCompat.setBackground(getView(viewId), background);
         return this;
     }
 
@@ -330,8 +305,7 @@ public final class ViewHolder {
      * 为{@link View}设置可视状态
      */
     public ViewHolder setVisibility(@IdRes int viewId, boolean visible) {
-        View view = getView(viewId);
-        view.setVisibility(visible ? View.VISIBLE : View.GONE);
+        getView(viewId).setVisibility(visible ? View.VISIBLE : View.GONE);
         return this;
     }
 
@@ -339,8 +313,7 @@ public final class ViewHolder {
      * 为{@link View}设置可视状态
      */
     public ViewHolder setVisibility(@IdRes int viewId, int visibility) {
-        View view = getView(viewId);
-        view.setVisibility(visibility);
+        getView(viewId).setVisibility(visibility);
         return this;
     }
 
@@ -348,8 +321,7 @@ public final class ViewHolder {
      * 为{@link View}设置启用状态
      */
     public ViewHolder setEnabled(@IdRes int viewId, boolean enabled) {
-        View view = getView(viewId);
-        view.setEnabled(enabled);
+        getView(viewId).setEnabled(enabled);
         return this;
     }
 
@@ -357,8 +329,7 @@ public final class ViewHolder {
      * 为{@link View}设置按下状态
      */
     public ViewHolder setPressed(@IdRes int viewId, boolean pressed) {
-        View view = getView(viewId);
-        view.setPressed(pressed);
+        getView(viewId).setPressed(pressed);
         return this;
     }
 
@@ -366,8 +337,7 @@ public final class ViewHolder {
      * 为{@link View}设置选择状态
      */
     public ViewHolder setSelected(@IdRes int viewId, boolean selected) {
-        View view = getView(viewId);
-        view.setSelected(selected);
+        getView(viewId).setSelected(selected);
         return this;
     }
 
@@ -375,8 +345,7 @@ public final class ViewHolder {
      * 为{@link View}设置激活状态
      */
     public ViewHolder setActivated(@IdRes int viewId, boolean activated) {
-        View view = getView(viewId);
-        view.setActivated(activated);
+        getView(viewId).setActivated(activated);
         return this;
     }
 
@@ -384,8 +353,7 @@ public final class ViewHolder {
      * 为{@link View}设置是否可以获得焦点
      */
     public ViewHolder setFocusable(@IdRes int viewId, boolean focusable) {
-        View view = getView(viewId);
-        view.setFocusable(focusable);
+        getView(viewId).setFocusable(focusable);
         return this;
     }
 
@@ -393,8 +361,7 @@ public final class ViewHolder {
      * 为{@link View}设置在触摸模式下是否可以获得焦点
      */
     public ViewHolder setFocusableInTouchMode(@IdRes int viewId, boolean focusableInTouchMode) {
-        View view = getView(viewId);
-        view.setFocusableInTouchMode(focusableInTouchMode);
+        getView(viewId).setFocusableInTouchMode(focusableInTouchMode);
         return this;
     }
 
@@ -402,8 +369,7 @@ public final class ViewHolder {
      * 为{@link View}设置是否允许点击事件
      */
     public ViewHolder setClickable(@IdRes int viewId, boolean clickable) {
-        View view = getView(viewId);
-        view.setClickable(clickable);
+        getView(viewId).setClickable(clickable);
         return this;
     }
 
@@ -411,8 +377,7 @@ public final class ViewHolder {
      * 为{@link View}设置是否允许长按事件
      */
     public ViewHolder setLongClickable(@IdRes int viewId, boolean longClickable) {
-        View view = getView(viewId);
-        view.setLongClickable(longClickable);
+        getView(viewId).setLongClickable(longClickable);
         return this;
     }
 
@@ -420,8 +385,7 @@ public final class ViewHolder {
      * 为{@link ProgressBar}设置进度
      */
     public ViewHolder setProgress(@IdRes int viewId, int progress) {
-        ProgressBar progressBar = getView(viewId);
-        progressBar.setProgress(progress);
+        ((ProgressBar) getView(viewId)).setProgress(progress);
         return this;
     }
 
@@ -430,8 +394,7 @@ public final class ViewHolder {
      */
     @TargetApi(Build.VERSION_CODES.N)
     public ViewHolder setProgress(@IdRes int viewId, int progress, boolean animate) {
-        ProgressBar progressBar = getView(viewId);
-        progressBar.setProgress(progress, animate);
+        ((ProgressBar) getView(viewId)).setProgress(progress, animate);
         return this;
     }
 
@@ -439,8 +402,7 @@ public final class ViewHolder {
      * 为{@link ProgressBar}设置最大值
      */
     public ViewHolder setMax(@IdRes int viewId, int max) {
-        ProgressBar progressBar = getView(viewId);
-        progressBar.setMax(max);
+        ((ProgressBar) getView(viewId)).setMax(max);
         return this;
     }
 
@@ -458,8 +420,7 @@ public final class ViewHolder {
      * 为{@link RatingBar}设置等级
      */
     public ViewHolder setRating(@IdRes int viewId, float rating) {
-        RatingBar ratingBar = getView(viewId);
-        ratingBar.setRating(rating);
+        ((RatingBar) getView(viewId)).setRating(rating);
         return this;
     }
 
@@ -477,8 +438,7 @@ public final class ViewHolder {
      * 为{@link Checkable}设置选中状态
      */
     public ViewHolder setChecked(@IdRes int viewId, boolean checked) {
-        Checkable checkable = getView(viewId);
-        checkable.setChecked(checked);
+        ((Checkable) getView(viewId)).setChecked(checked);
         return this;
     }
 
@@ -486,8 +446,7 @@ public final class ViewHolder {
      * 为{@link View}设置透明度
      */
     public ViewHolder setAlpha(@IdRes int viewId, @FloatRange(from = 0.0, to = 1.0) float alpha) {
-        View view = getView(viewId);
-        view.setAlpha(alpha);
+        getView(viewId).setAlpha(alpha);
         return this;
     }
 
@@ -495,8 +454,7 @@ public final class ViewHolder {
      * 为{@link View}设置TAG
      */
     public ViewHolder setTag(@IdRes int viewId, final Object tag) {
-        View view = getView(viewId);
-        view.setTag(tag);
+        getView(viewId).setTag(tag);
         return this;
     }
 
@@ -504,8 +462,39 @@ public final class ViewHolder {
      * 为{@link View}设置TAG
      */
     public ViewHolder setTag(@IdRes int viewId, int key, final Object tag) {
-        View view = getView(viewId);
-        view.setTag(key, tag);
+        getView(viewId).setTag(key, tag);
+        return this;
+    }
+
+    /**
+     * 为{@link View}设置Padding
+     */
+    public ViewHolder setPadding(@IdRes int viewId, @Px int left, @Px int top, @Px int right, @Px int bottom) {
+        getView(viewId).setPadding(left, top, right, bottom);
+        return this;
+    }
+
+    /**
+     * 为{@link View}设置最小宽度
+     */
+    public ViewHolder setMinimumWidth(@IdRes int viewId, int minWidth) {
+        getView(viewId).setMinimumWidth(minWidth);
+        return this;
+    }
+
+    /**
+     * 为{@link View}设置最小高度
+     */
+    public ViewHolder setMinimumHeight(@IdRes int viewId, int minHeight) {
+        getView(viewId).setMinimumHeight(minHeight);
+        return this;
+    }
+
+    /**
+     * 为{@link View}设置是否应考虑系统屏幕装饰
+     */
+    public ViewHolder setFitsSystemWindows(@IdRes int viewId, boolean fitSystemWindows) {
+        getView(viewId).setFitsSystemWindows(fitSystemWindows);
         return this;
     }
 
@@ -513,8 +502,7 @@ public final class ViewHolder {
      * 为{@link View}设置点击事件
      */
     public ViewHolder setOnClickListener(@IdRes int viewId, @Nullable View.OnClickListener listener) {
-        View view = getView(viewId);
-        view.setOnClickListener(listener);
+        getView(viewId).setOnClickListener(listener);
         return this;
     }
 
@@ -522,8 +510,7 @@ public final class ViewHolder {
      * 为{@link View}设置长点击事件
      */
     public ViewHolder setOnLongClickListener(@IdRes int viewId, @Nullable View.OnLongClickListener listener) {
-        View view = getView(viewId);
-        view.setOnLongClickListener(listener);
+        getView(viewId).setOnLongClickListener(listener);
         return this;
     }
 
@@ -531,8 +518,7 @@ public final class ViewHolder {
      * 为{@link View}设置触摸事件
      */
     public ViewHolder setOnTouchListener(@IdRes int viewId, View.OnTouchListener listener) {
-        View view = getView(viewId);
-        view.setOnTouchListener(listener);
+        getView(viewId).setOnTouchListener(listener);
         return this;
     }
 

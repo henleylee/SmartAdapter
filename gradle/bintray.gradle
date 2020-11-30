@@ -21,8 +21,10 @@ publish {
     userOrg = 'henleylee'
     groupId = 'com.henley.android'
     artifactId = 'smartadapter'
-    publishVersion = '1.0.3'
+    publishVersion = '1.0.4'
     uploadName = 'SmartAdapter'
     desc = 'Android 万能的 Adapter for ListView、GridView、RecyclerView、ViewPager 等，支持多种Item类型的情况。'
     website = siteUrl
+    dryRun = false
+    override = true
 }

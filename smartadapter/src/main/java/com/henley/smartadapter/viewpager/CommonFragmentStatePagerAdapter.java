@@ -1,12 +1,12 @@
 package com.henley.smartadapter.viewpager;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-
-import java.util.List;
 
 /**
  * 实现Fragment在ViewPager中进行滑动切换的适配器
@@ -23,17 +23,15 @@ import java.util.List;
  */
 public class CommonFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
 
-    private List<? extends Fragment> mFragments;
-    private List<? extends CharSequence> mTitles;
+    private final List<? extends Fragment> mFragments;
+    private final List<? extends CharSequence> mTitles;
 
     public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, @NonNull List<? extends Fragment> fragments) {
         this(fm, fragments, null);
     }
 
     public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, @NonNull List<? extends Fragment> fragments, List<? extends CharSequence> titles) {
-        super(fm);
-        this.mFragments = fragments;
-        this.mTitles = titles;
+        this(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragments, titles);
     }
 
     public CommonFragmentStatePagerAdapter(@NonNull FragmentManager fm, int behavior, @NonNull List<? extends Fragment> fragments) {
