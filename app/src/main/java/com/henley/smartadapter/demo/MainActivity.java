@@ -31,12 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.recycleview_single_multi:
                 startActivity(new Intent(this, RecycleViewActivity.class));
                 break;
-            case R.id.recycleview_header_footer:
-                startActivity(new Intent(this, HeaderAndFooterWrapperActivity.class));
-                break;
-            case R.id.recycleview_emptyview:
-                startActivity(new Intent(this, EmptyViewWrapperActivity.class));
-                break;
         }
     }
 

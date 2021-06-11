@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/recycleview_header_footer"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/recycleview_emptyview"
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/recycleview_emptyview"
-        android:textAllCaps="false" />
-
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
 </LinearLayout>

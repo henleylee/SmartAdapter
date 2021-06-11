@@ -25,12 +25,6 @@
         <activity
             android:name="com.henley.smartadapter.demo.RecycleViewActivity"
             android:label="@string/recycleview_single_multi" />
-        <activity
-            android:name="com.henley.smartadapter.demo.HeaderAndFooterWrapperActivity"
-            android:label="@string/recycleview_header_footer" />
-        <activity
-            android:name="com.henley.smartadapter.demo.EmptyViewWrapperActivity"
-            android:label="@string/recycleview_emptyview" />
     </application>
 
 </manifest>
