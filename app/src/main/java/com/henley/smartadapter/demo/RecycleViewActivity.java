@@ -1,21 +1,23 @@
 package com.henley.smartadapter.demo;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.henley.smartadapter.demo.delegate.MessageCommonItemDelagate;
 import com.henley.smartadapter.demo.delegate.MessageReceiveItemDelagate;
 import com.henley.smartadapter.demo.delegate.MessageSendItemDelagate;
-import com.henley.smartadapter.recycleview.adapter.MultiItemTypeAdapter;
-import com.henley.smartadapter.recycleview.listener.OnItemClickListener;
-import com.henley.smartadapter.recycleview.listener.OnItemLongClickListener;
+import com.henley.smartadapter.recyclerview.adapter.MultiItemTypeAdapter;
+import com.henley.smartadapter.recyclerview.listener.OnItemClickListener;
+import com.henley.smartadapter.recyclerview.listener.OnItemLongClickListener;
 
 /**
  * @author Henley
@@ -69,12 +71,12 @@ public class RecycleViewActivity extends AppCompatActivity implements OnItemClic
     }
 
     @Override
-    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+    public void onItemClick(@NonNull View view, @NonNull RecyclerView.ViewHolder holder, int position) {
         showToast("onItemClick--->" + position);
     }
 
     @Override
-    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+    public boolean onItemLongClick(@NonNull View view, @NonNull RecyclerView.ViewHolder holder, int position) {
         showToast("onItemLongClick--->" + position);
         return true;
     }

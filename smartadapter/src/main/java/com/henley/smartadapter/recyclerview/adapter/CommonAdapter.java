@@ -1,20 +1,20 @@
-package com.henley.smartadapter.recycleview.adapter;
+package com.henley.smartadapter.recyclerview.adapter;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.henley.smartadapter.common.IRecycleViewAdapter;
-import com.henley.smartadapter.recycleview.holder.RecyclerViewHolder;
-import com.henley.smartadapter.recycleview.listener.OnItemClickListener;
-import com.henley.smartadapter.recycleview.listener.OnItemLongClickListener;
+import com.henley.smartadapter.recyclerview.holder.RecyclerViewHolder;
+import com.henley.smartadapter.recyclerview.listener.OnItemClickListener;
+import com.henley.smartadapter.recyclerview.listener.OnItemLongClickListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link RecyclerView}适配器
@@ -26,27 +26,27 @@ import androidx.recyclerview.widget.RecyclerView;
 public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<RecyclerViewHolder> implements IRecycleViewAdapter<DataType> {
 
     /** 上下文 */
-    private Context mContext;
+    private Context context;
     /** 数据源 */
-    private final List<DataType> mDatas = new ArrayList<>();
-    private OnItemClickListener mOnItemClickListener;
-    private OnItemLongClickListener mOnItemLongClickListener;
+    private final List<DataType> datas = new ArrayList<>();
+    private OnItemClickListener onItemClickListener;
+    private OnItemLongClickListener onItemLongClickListener;
 
     public CommonAdapter(Collection<DataType> datas) {
         if (datas == null) {
             datas = new ArrayList<>();
         }
-        this.mDatas.addAll(datas);
+        this.datas.addAll(datas);
     }
 
     @Override
     public Context getContext() {
-        return mContext;
+        return context;
     }
 
     @Override
     public List<DataType> getDatas() {
-        return mDatas;
+        return datas;
     }
 
     @Override
@@ -54,20 +54,20 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
         if (datas == null) {
             datas = new ArrayList<>(0);
         }
-        this.mDatas.clear();
-        this.mDatas.addAll(datas);
+        this.datas.clear();
+        this.datas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void add(DataType data) {
-        this.mDatas.add(data);
+        this.datas.add(data);
         this.notifyItemInserted(getItemCount() - 1);
     }
 
     @Override
     public void add(int position, DataType data) {
-        this.mDatas.add(position, data);
+        this.datas.add(position, data);
         this.notifyItemInserted(position);
     }
 
@@ -77,20 +77,20 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
             return;
         }
         int itemCount = getItemCount();
-        this.mDatas.addAll(datas);
+        this.datas.addAll(datas);
         this.notifyItemRangeInserted(itemCount, datas.size());
     }
 
     @Override
     public void remove(int position) {
-        this.mDatas.remove(position);
+        this.datas.remove(position);
         this.notifyItemRemoved(getItemCount() - 1);
     }
 
     @Override
     public void remove(DataType data) {
-        int indexToRemove = mDatas.indexOf(data);
-        this.mDatas.remove(indexToRemove);
+        int indexToRemove = datas.indexOf(data);
+        this.datas.remove(indexToRemove);
         this.notifyItemRemoved(indexToRemove);
     }
 
@@ -99,13 +99,13 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
         if (datas == null || datas.size() == 0) {
             return;
         }
-        this.mDatas.removeAll(datas);
+        this.datas.removeAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void clear() {
-        this.mDatas.clear();
+        this.datas.clear();
         this.notifyDataSetChanged();
     }
 
@@ -126,37 +126,37 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
 
     @Override
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mOnItemClickListener = listener;
+        this.onItemClickListener = listener;
     }
 
     @Override
     public void setOnItemLongClickListener(OnItemLongClickListener listener) {
-        this.mOnItemLongClickListener = listener;
+        this.onItemLongClickListener = listener;
     }
 
     @Override
     public DataType getItem(int position) {
-        return mDatas.get(position);
+        return datas.get(position);
     }
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return datas.size();
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (mContext == null) {
-            mContext = parent.getContext();
+        if (context == null) {
+            context = parent.getContext();
         }
         int itemLayoutID = getItemLayoutID(viewType);
-        return RecyclerViewHolder.createViewHolder(mContext, parent, itemLayoutID);
+        return RecyclerViewHolder.createViewHolder(context, parent, itemLayoutID);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerViewHolder holder, final int position) {
-        final int finalPosition = holder.getAdapterPosition();
+        final int finalPosition = holder.getBindingAdapterPosition();
         setItemViewListener(holder, finalPosition);
         convert(holder.getViewHolder(), getItem(position), finalPosition);
     }
@@ -174,16 +174,16 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(v, holder, position);
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(v, holder, position);
                 }
             }
         });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (mOnItemLongClickListener != null) {
-                    return mOnItemLongClickListener.onItemLongClick(v, holder, position);
+                if (onItemLongClickListener != null) {
+                    return onItemLongClickListener.onItemLongClick(v, holder, position);
                 }
                 return false;
             }

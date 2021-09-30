@@ -1,5 +1,7 @@
 package com.henley.smartadapter.demo.delegate;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.delegate.ItemViewDelegate;
 import com.henley.smartadapter.demo.ChatMessage;
@@ -22,7 +24,7 @@ public class MessageSendItemDelagate implements ItemViewDelegate<ChatMessage> {
     }
 
     @Override
-    public void convert(ViewHolder holder, ChatMessage data, int position) {
+    public void convert(@NonNull ViewHolder holder, ChatMessage data, int position) {
         holder.setText(R.id.chat_send_content, data.getContent());
         holder.setText(R.id.chat_send_name, data.getName());
         holder.setImageResource(R.id.chat_send_icon, data.getIcon());

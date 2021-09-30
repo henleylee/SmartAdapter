@@ -1,4 +1,4 @@
-package com.henley.smartadapter.recycleview.listener;
+package com.henley.smartadapter.recyclerview.listener;
 
 import android.view.View;
 

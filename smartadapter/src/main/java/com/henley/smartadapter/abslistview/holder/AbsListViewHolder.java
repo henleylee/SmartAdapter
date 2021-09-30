@@ -19,16 +19,11 @@ import com.henley.smartadapter.common.ViewHolder;
  */
 public final class AbsListViewHolder {
 
-    private final View mConvertView;
-    private final ViewHolder mHolder;
+    private final View convertView;
+    private final ViewHolder viewHolder;
 
     /**
-     * 返回一个ViewHolder对象
-     *
-     * @param convertView
-     * @param parent
-     * @param layoutId
-     * @return
+     * 返回一个{@link ViewHolder}对象
      */
     public static AbsListViewHolder getViewHolder(@Nullable View convertView, @NonNull ViewGroup parent, @LayoutRes int layoutId) {
         if (convertView == null) {
@@ -39,16 +34,16 @@ public final class AbsListViewHolder {
     }
 
     private AbsListViewHolder(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
-        this.mConvertView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-        this.mConvertView.setTag(this);
-        this.mHolder = ViewHolder.creat(mConvertView);
+        this.convertView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
+        this.convertView.setTag(this);
+        this.viewHolder = ViewHolder.create(convertView, this);
     }
 
     public View getConvertView() {
-        return mConvertView;
+        return convertView;
     }
 
     public ViewHolder getViewHolder() {
-        return mHolder;
+        return viewHolder;
     }
 }

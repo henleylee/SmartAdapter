@@ -1,5 +1,7 @@
 package com.henley.smartadapter.demo.adapter;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.abslistview.adapter.CommonAdapter;
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.demo.ChatMessage;
@@ -24,7 +26,7 @@ public class ListViewSingleAdapter extends CommonAdapter<ChatMessage> {
     }
 
     @Override
-    public void convert(ViewHolder holder, ChatMessage data, int position) {
+    public void convert(@NonNull ViewHolder holder, ChatMessage data, int position) {
         holder.setText(R.id.chat_common_content, data.getContent());
         holder.setText(R.id.chat_common_name, data.getName());
         holder.setImageResource(R.id.chat_common_icon, data.getIcon());

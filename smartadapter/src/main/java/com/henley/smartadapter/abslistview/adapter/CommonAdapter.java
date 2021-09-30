@@ -22,25 +22,25 @@ import java.util.List;
 public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAdapter<DataType> {
 
     /** 上下文 */
-    private Context mContext;
+    private Context context;
     /** 数据源 */
-    private final List<DataType> mDatas = new ArrayList<>();
+    private final List<DataType> datas = new ArrayList<>();
 
     public CommonAdapter(Collection<DataType> datas) {
         if (datas == null) {
             datas = new ArrayList<>(0);
         }
-        this.mDatas.addAll(datas);
+        this.datas.addAll(datas);
     }
 
     @Override
     public Context getContext() {
-        return mContext;
+        return context;
     }
 
     @Override
     public List<DataType> getDatas() {
-        return mDatas;
+        return datas;
     }
 
     @Override
@@ -48,20 +48,20 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
         if (datas == null) {
             datas = new ArrayList<>(0);
         }
-        this.mDatas.clear();
-        this.mDatas.addAll(datas);
+        this.datas.clear();
+        this.datas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void add(DataType data) {
-        this.mDatas.add(data);
+        this.datas.add(data);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void add(int position, DataType data) {
-        this.mDatas.add(position, data);
+        this.datas.add(position, data);
         this.notifyDataSetChanged();
     }
 
@@ -70,19 +70,19 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
         if (datas == null || datas.isEmpty()) {
             return;
         }
-        this.mDatas.addAll(datas);
+        this.datas.addAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void remove(int position) {
-        this.mDatas.remove(position);
+        this.datas.remove(position);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void remove(DataType data) {
-        this.mDatas.remove(data);
+        this.datas.remove(data);
         this.notifyDataSetChanged();
     }
 
@@ -91,24 +91,24 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
         if (datas == null || datas.size() == 0) {
             return;
         }
-        this.mDatas.removeAll(datas);
+        this.datas.removeAll(datas);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void clear() {
-        this.mDatas.clear();
+        this.datas.clear();
         this.notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return mDatas.size();
+        return datas.size();
     }
 
     @Override
     public DataType getItem(int position) {
-        return mDatas.get(position);
+        return datas.get(position);
     }
 
     @Override
@@ -118,8 +118,8 @@ public abstract class CommonAdapter<DataType> extends BaseAdapter implements IAd
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (mContext == null) {
-            mContext = parent.getContext();
+        if (context == null) {
+            context = parent.getContext();
         }
         int itemLayoutID = getItemLayoutID(getItemViewType(position));
         AbsListViewHolder viewHolder = AbsListViewHolder.getViewHolder(convertView, parent, itemLayoutID);

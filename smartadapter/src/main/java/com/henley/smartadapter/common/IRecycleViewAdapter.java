@@ -1,7 +1,7 @@
 package com.henley.smartadapter.common;
 
-import com.henley.smartadapter.recycleview.listener.OnItemClickListener;
-import com.henley.smartadapter.recycleview.listener.OnItemLongClickListener;
+import com.henley.smartadapter.recyclerview.listener.OnItemClickListener;
+import com.henley.smartadapter.recyclerview.listener.OnItemLongClickListener;
 
 /**
  * RecyclerView的Adapter数据操作接口

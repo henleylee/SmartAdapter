@@ -1,4 +1,4 @@
-package com.henley.smartadapter.recycleview.callback;
+package com.henley.smartadapter.recyclerview.callback;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;

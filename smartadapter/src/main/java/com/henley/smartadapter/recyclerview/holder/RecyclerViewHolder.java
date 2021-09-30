@@ -1,4 +1,4 @@
-package com.henley.smartadapter.recycleview.holder;
+package com.henley.smartadapter.recyclerview.holder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,8 +19,8 @@ import com.henley.smartadapter.common.ViewHolder;
  */
 public final class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-    private final Context mContext;
-    private final ViewHolder mHolder;
+    private final Context context;
+    private final ViewHolder viewHolder;
 
     public static RecyclerViewHolder createViewHolder(@NonNull Context context, @NonNull View itemView) {
         return new RecyclerViewHolder(context, itemView);
@@ -33,12 +33,12 @@ public final class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     private RecyclerViewHolder(@NonNull Context context, @NonNull View itemView) {
         super(itemView);
-        this.mContext = context;
-        this.mHolder = ViewHolder.creat(itemView);
+        this.context = context;
+        this.viewHolder = ViewHolder.create(itemView, this);
     }
 
     public Context getContext() {
-        return mContext;
+        return context;
     }
 
     public View getItemView() {
@@ -46,7 +46,7 @@ public final class RecyclerViewHolder extends RecyclerView.ViewHolder {
     }
 
     public ViewHolder getViewHolder() {
-        return mHolder;
+        return viewHolder;
     }
 
 }

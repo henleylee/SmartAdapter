@@ -2,14 +2,14 @@ package com.henley.smartadapter.abslistview.adapter;
 
 import android.widget.AbsListView;
 
+import androidx.annotation.NonNull;
+
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.delegate.IAdapterDelegate;
 import com.henley.smartadapter.delegate.ItemViewDelegate;
 import com.henley.smartadapter.delegate.ItemViewDelegateManager;
 
 import java.util.Collection;
-
-import androidx.annotation.NonNull;
 
 /**
  * {@link AbsListView}适配器(用于多种ItemView类型)
@@ -27,7 +27,7 @@ public class MultiItemTypeAdapter<DataType> extends CommonAdapter<DataType> impl
     }
 
     @Override
-    public void addItemViewDelegate(ItemViewDelegate<DataType> delegate) {
+    public void addItemViewDelegate(@NonNull ItemViewDelegate<DataType> delegate) {
         mItemViewDelegateManager.addDelegate(delegate);
     }
 

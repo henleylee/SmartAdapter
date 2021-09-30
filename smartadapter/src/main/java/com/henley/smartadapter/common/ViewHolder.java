@@ -39,41 +39,47 @@ import androidx.core.widget.ImageViewCompat;
  */
 public final class ViewHolder {
 
-    private final View mItemView;
-    private final Context mContext;
-    private final SparseArray<View> mViews;
+    private final View itemView;
+    private final Object viewHolder;
+    private final Context context;
+    private final SparseArray<View> views;
 
     /**
      * 创建{@link ViewHolder}
      *
      * @param itemView ItemView对象
      */
-    public static ViewHolder creat(View itemView) {
-        return new ViewHolder(itemView);
+    public static ViewHolder create(View itemView, Object viewHolder) {
+        return new ViewHolder(itemView, viewHolder);
     }
 
-    private ViewHolder(View itemView) {
-        this.mItemView = itemView;
-        this.mViews = new SparseArray<>();
-        this.mContext = mItemView.getContext();
+    private ViewHolder(View itemView, Object viewHolder) {
+        this.itemView = itemView;
+        this.viewHolder = viewHolder;
+        this.views = new SparseArray<>();
+        this.context = this.itemView.getContext();
+    }
+
+    public Object getViewHolder() {
+        return viewHolder;
     }
 
     /**
      * 返回{@link Context}对象
      */
     public Context getContext() {
-        return mContext;
+        return context;
     }
 
     /**
      * 返回{@link View}对象(ItemView)
      */
     public View getItemView() {
-        return mItemView;
+        return itemView;
     }
 
     public SparseArray<View> getChildViews() {
-        return mViews;
+        return views;
     }
 
     /**
@@ -82,10 +88,10 @@ public final class ViewHolder {
      * @param viewId 控件的资源ID
      */
     public final <ViewType extends View> ViewType getView(@IdRes int viewId) {
-        View view = mViews.get(viewId);
+        View view = views.get(viewId);
         if (view == null) {
-            view = mItemView.findViewById(viewId);
-            mViews.put(viewId, view);
+            view = itemView.findViewById(viewId);
+            views.put(viewId, view);
         }
         return (ViewType) view;
     }

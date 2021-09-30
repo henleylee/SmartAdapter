@@ -3,7 +3,7 @@ package com.henley.smartadapter.demo.adapter;
 import com.henley.smartadapter.demo.ChatMessage;
 import com.henley.smartadapter.demo.delegate.MessageReceiveItemDelagate;
 import com.henley.smartadapter.demo.delegate.MessageSendItemDelagate;
-import com.henley.smartadapter.recycleview.adapter.MultiItemTypeAdapter;
+import com.henley.smartadapter.recyclerview.adapter.MultiItemTypeAdapter;
 
 import java.util.Collection;
 

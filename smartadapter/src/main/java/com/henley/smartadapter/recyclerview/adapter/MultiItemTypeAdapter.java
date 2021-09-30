@@ -1,4 +1,7 @@
-package com.henley.smartadapter.recycleview.adapter;
+package com.henley.smartadapter.recyclerview.adapter;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.henley.smartadapter.common.ViewHolder;
 import com.henley.smartadapter.delegate.IAdapterDelegate;
@@ -6,9 +9,6 @@ import com.henley.smartadapter.delegate.ItemViewDelegate;
 import com.henley.smartadapter.delegate.ItemViewDelegateManager;
 
 import java.util.Collection;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link RecyclerView}适配器(用于多种ItemView类型)
