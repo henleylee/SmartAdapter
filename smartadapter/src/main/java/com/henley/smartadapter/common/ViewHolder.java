@@ -87,7 +87,8 @@ public final class ViewHolder {
      *
      * @param viewId 控件的资源ID
      */
-    public final <ViewType extends View> ViewType getView(@IdRes int viewId) {
+    @SuppressWarnings("unchecked")
+    public <ViewType extends View> ViewType getView(@IdRes int viewId) {
         View view = views.get(viewId);
         if (view == null) {
             view = itemView.findViewById(viewId);

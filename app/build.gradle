@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id 'com.android.application'
 }
 
 android {
@@ -11,6 +11,11 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         applicationId "com.henley.smartadapter.demo"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     signingConfigs {
