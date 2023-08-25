@@ -32,11 +32,11 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
     private OnItemClickListener onItemClickListener;
     private OnItemLongClickListener onItemLongClickListener;
 
-    public CommonAdapter(Collection<DataType> datas) {
-        if (datas == null) {
-            datas = new ArrayList<>();
+    public CommonAdapter(Collection<DataType> data) {
+        if (data == null) {
+            data = new ArrayList<>();
         }
-        this.datas.addAll(datas);
+        this.datas.addAll(data);
     }
 
     @Override
@@ -50,19 +50,20 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
     }
 
     @Override
-    public void refresh(List<DataType> datas) {
-        if (datas == null) {
-            datas = new ArrayList<>(0);
+    public void refresh(List<DataType> data) {
+        if (data == null) {
+            data = new ArrayList<>(0);
         }
         this.datas.clear();
-        this.datas.addAll(datas);
+        this.datas.addAll(data);
         this.notifyDataSetChanged();
     }
 
     @Override
     public void add(DataType data) {
-        this.datas.add(data);
-        this.notifyItemInserted(getItemCount() - 1);
+        if (this.datas.add(data)) {
+            this.notifyItemInserted(getItemCount() - 1);
+        }
     }
 
     @Override
@@ -72,41 +73,48 @@ public abstract class CommonAdapter<DataType> extends RecyclerView.Adapter<Recyc
     }
 
     @Override
-    public void addAll(List<DataType> datas) {
-        if (datas == null || datas.isEmpty()) {
+    public void addAll(List<DataType> data) {
+        if (data == null || data.isEmpty()) {
             return;
         }
-        int itemCount = getItemCount();
-        this.datas.addAll(datas);
-        this.notifyItemRangeInserted(itemCount, datas.size());
+        if (this.datas.addAll(data)) {
+            int itemCount = getItemCount();
+            this.notifyItemRangeInserted(itemCount, data.size());
+        }
     }
 
     @Override
     public void remove(int position) {
-        this.datas.remove(position);
-        this.notifyItemRemoved(getItemCount() - 1);
+        if (position >= 0 && position <= getItemCount() - 1) {
+            this.datas.remove(position);
+            this.notifyItemRemoved(position);
+        }
     }
 
     @Override
     public void remove(DataType data) {
         int indexToRemove = datas.indexOf(data);
-        this.datas.remove(indexToRemove);
-        this.notifyItemRemoved(indexToRemove);
+        if (indexToRemove != -1) {
+            this.datas.remove(indexToRemove);
+            this.notifyItemRemoved(indexToRemove);
+        }
     }
 
     @Override
-    public void removeAll(List<DataType> datas) {
-        if (datas == null || datas.size() == 0) {
+    public void removeAll(List<DataType> data) {
+        if (data == null || data.size() == 0) {
             return;
         }
-        this.datas.removeAll(datas);
-        this.notifyDataSetChanged();
+        int size = datas.size();
+        this.datas.removeAll(data);
+        notifyDataSetChanged();
     }
 
     @Override
     public void clear() {
+        int size = datas.size();
         this.datas.clear();
-        this.notifyDataSetChanged();
+        notifyItemRangeRemoved(0, size);
     }
 
     @Override
